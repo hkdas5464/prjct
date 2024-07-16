@@ -84,7 +84,7 @@ export default function Profile() {
               <ScrollShadow hideScrollBar className=" h-[400px]">
                 {
                   Buttons_name.map((e) => (
-                    <div className=" flex flex-col rounded-lg shadow-sm">
+                    <div key={e} className=" flex flex-col rounded-lg shadow-sm">
                     <button 
                       key={e}
                       onClick={() => setActiveTab(e)}
