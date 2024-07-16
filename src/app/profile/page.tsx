@@ -2,9 +2,16 @@
 import { useState } from 'react';
 import Organization from './pages/Organization';
 import ProfileNavbar from './Navbar';
-import { Accordion, AccordionItem, Avatar, Button, Card } from '@nextui-org/react';
+import { Accordion, AccordionItem, Avatar, Button, Card, ScrollShadow } from '@nextui-org/react';
 import MyTab from './Tabs';
 import Image from 'next/image';
+import OverView from './OverView';
+import Persormence from './pages/Persormence';
+import Summary from './pages/Summary';
+import Job from './pages/Job';
+import Absence from './pages/Absence';
+import Personal from './pages/Personal';
+import Compesation from './pages/Compesation';
 export default function Profile() {
   const [activeTab, setActiveTab] = useState('Organization');
   const [isMoreVisible, setIsMoreVisible] = useState(false);
@@ -17,6 +24,18 @@ export default function Profile() {
     'Service Date',
     'Documents',
   ];
+
+
+  const Buttons_name = [
+    'Summary',
+    'Overview',
+    'Job',
+    'Compesation',
+    'Personal',
+    'Absence',
+    'Persormence'
+  ];
+
 
   const moreOptions = [
     'Option 1',
@@ -51,6 +70,8 @@ export default function Profile() {
                 Active
               </Button>
             </div>
+
+            
             <div className="space-y-2" >
             <div className="flex mb-4">
               <Button className=' w-1/2 mr-2' color="primary" href="#" variant="flat">
@@ -60,15 +81,26 @@ export default function Profile() {
                 Team
               </Button>
               </div>
-              <Button className=' w-full' color="primary" href="#" variant="flat">
-                More (7)
-              </Button>
+              <ScrollShadow hideScrollBar className=" h-[400px]">
+                {
+                  Buttons_name.map((e) => (
+                    <div className=" flex flex-col rounded-lg shadow-sm">
+                    <button 
+                      key={e}
+                      onClick={() => setActiveTab(e)}
+                    type="button" className=" py-3 px-4 inline-flex items-center gap-x-2  text-md font-medium focus:z-10 border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
+                      {e}
+                    </button>
+                  </div>
+                  ))
+                }
 
               <Accordion className='bg-red'>
                 <AccordionItem key="1" aria-label="Accordion 1" className='bg-red' title="More (7)">
                   sdfcew
                 </AccordionItem>
               </Accordion>
+              </ScrollShadow>
 
               {isMoreVisible && (
                 <div className="space-y-2 mt-2">
@@ -87,7 +119,7 @@ export default function Profile() {
         </div>
         <div className="sm:w-3/4  h-12 hidden lg:block">
           <section className="flex-1 p-4 ml-0 md:ml-1/4 mt-16 md:mt-0">
-            <nav className="flex flex-wrap space-x-4 mb-4">
+            {/* <nav className="flex flex-wrap space-x-4 mb-4">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -100,14 +132,18 @@ export default function Profile() {
                   {tab}
                 </button>
               ))}
-            </nav>
+            </nav> */}
             <div>
-              {activeTab === 'Organization' && <div>Organization Content</div>}
-              {activeTab === 'Management' && <div>Management Content</div>}
-              {activeTab === 'Support Role' && <div>Support Role Content</div>}
-              {activeTab === 'Work History' && <div>Work History Content</div>}
-              {activeTab === 'Service Date' && <div>Service Date Content</div>}
-              {activeTab === 'Documents' && <div><Organization /></div>}
+              {activeTab === 'Overview' && <div><OverView/></div>}
+              {activeTab === 'Organization' && <div><Organization/></div>}
+              {activeTab === 'Summary' && <div><Summary/></div>}
+              {activeTab === 'Job' && <div><Job/></div>}
+              {activeTab === 'Absence' && <div><Absence/></div>}
+              {activeTab === 'Compesation' && <div><Compesation/></div>}
+              {activeTab === 'Persormence' && <div><Persormence /></div>}
+              {activeTab === 'Personal' && <div><Personal /></div>}
+             
+      
             </div>
           </section>
         </div>
