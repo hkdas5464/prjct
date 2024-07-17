@@ -1,9 +1,18 @@
-import React from 'react'
+import Head from 'next/head';
+import RequestSection from './absence/components/RequestSection';
+import ViewSection from './absence/components/ViewSection';
+import BalanceSection from './absence/components/BalanceSection';
+import MyApp from './Appbar'
 
-function Absence() {
+export default function Home() {
   return (
-    <div>Absence</div>
-  )
-}
+    <div className="">
+      <MyApp title={"Absence"}/>
 
-export default Absence
+     
+        <RequestSection />
+      
+ 
+    </div>
+  );
+}
