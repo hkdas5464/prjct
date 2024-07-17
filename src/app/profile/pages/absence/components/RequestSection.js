@@ -29,7 +29,7 @@ export default function App() {
                     </CardHeader>
                     <div className="mt-20 grid p-4">
                         {request.map((e) => (
-                            <Button color="primary" variant="bordered" className="mt-2">
+                            <Button key={e} color="primary" variant="bordered" className="mt-2">
                                 {e}
                             </Button>
                         ))}
@@ -43,7 +43,7 @@ export default function App() {
                     </CardHeader>
                     <div className="mt-20 grid p-4">
                         {view.map((e) => (
-                            <Button color="primary" variant="bordered" className="mt-2">
+                            <Button key={e} color="primary" variant="bordered" className="mt-2">
                                 {e}
                             </Button>
                         ))}
