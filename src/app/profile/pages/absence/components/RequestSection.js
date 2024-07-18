@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, CardHeader, CardBody, CardFooter, Image, Button, } from "@nextui-org/react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
+import Link from "next/link";
+
 
 export default function App() {
 
@@ -14,9 +16,13 @@ export default function App() {
 
 
 
-    const view = [
-        "My Absence",
-        "My Absence Balance",
+    const view = [{
+        type:"My Absence",
+        link:"myabsence"
+    },{
+        type:"My Absence Balance",
+        link:"myabsencebalance"
+    }
     ]
     return (
         <div>
@@ -29,9 +35,10 @@ export default function App() {
                     </CardHeader>
                     <div className="mt-20 grid p-4">
                         {request.map((e) => (
-                            <Button key={e} color="primary" variant="bordered" className="mt-2">
+                            <Button key={e} color="primary" variant="bordered" className="mt-2" href="profile/pages/absence/myabsence">
                                 {e}
                             </Button>
+
                         ))}
                     </div>
                 </Card>
@@ -43,9 +50,12 @@ export default function App() {
                     </CardHeader>
                     <div className="mt-20 grid p-4">
                         {view.map((e) => (
-                            <Button key={e} color="primary" variant="bordered" className="mt-2">
-                                {e}
-                            </Button>
+                            <Link href={"/profile/pages/absence/"+`${e.link}`}>
+
+                                <Button key={e} color="primary" variant="bordered" className="mt-2">
+                                    {e.type}
+                                </Button>
+                            </Link>
                         ))}
                     </div>
                 </Card>
