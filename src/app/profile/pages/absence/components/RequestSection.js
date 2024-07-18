@@ -50,7 +50,7 @@ export default function App() {
                     </CardHeader>
                     <div className="mt-20 grid p-4">
                         {view.map((e) => (
-                            <Link href={"/profile/pages/absence/"+`${e.link}`}>
+                            <Link href={"/profile/pages/absence/"+`${e.link}`} key={e.link}>
 
                                 <Button key={e} color="primary" variant="bordered" className="mt-2">
                                     {e.type}
